@@ -5,8 +5,9 @@ Plugin to create TextField with search box and modal / bottomsheet as selector
 To use this plugin, add ```modal_searchbox``` as a [dependency in your pubspec.yaml](https://flutter.io/platform-plugins/).
 
 ### Demo
-<img src="https://user-images.githubusercontent.com/40958185/205479424-037a6aac-4c52-4047-b4cf-c85706548ff4.gif" width=20% height=20% />
-<img src="https://user-images.githubusercontent.com/40958185/205479437-72917ced-5193-4cb3-a937-a08e6a0cabda.gif" width=20% height=20% />
+<p float="left">
+<img src="https://user-images.githubusercontent.com/40958185/205479437-72917ced-5193-4cb3-a937-a08e6a0cabda.gif" width=20% height=20% /> <img src="https://user-images.githubusercontent.com/40958185/205479424-037a6aac-4c52-4047-b4cf-c85706548ff4.gif" width=20% height=20% />
+</p>
 
 ### Example
 ```dart
