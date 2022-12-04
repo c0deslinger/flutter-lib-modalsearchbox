@@ -83,7 +83,7 @@ class _ModalSearchboxState extends State<ModalSearchbox> {
             data: data,
             selectedItemBackgroundColor: widget.selectedItemBackgroundColor,
             useSearch: widget.addSearch,
-            selectedValue: widget.selectedValue,
+            selectedValue: selectedValue,
             onSelected: (v, isAlreadySelected) {
               if (widget.isMultipleSelect) {
                 setState(() {
