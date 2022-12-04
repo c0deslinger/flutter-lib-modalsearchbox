@@ -1,8 +1,12 @@
 # modal_searchbox
 Plugin to create TextField with search box and modal / bottomsheet as selector
 
+## Pub.Dev
+https://pub.dev/packages/modal_searchbox
+
 ## Usage
 To use this plugin, add ```modal_searchbox``` as a [dependency in your pubspec.yaml](https://flutter.io/platform-plugins/).
+
 
 ### Demo
 <p float="left">
