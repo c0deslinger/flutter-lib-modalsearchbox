@@ -1,6 +1,6 @@
 name: modal_searchbox
 description: Plugin to create TextField with search box and modal / bottomsheet as selector
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/c0deslinger/flutter-lib-modalsearchbox
 
 environment:

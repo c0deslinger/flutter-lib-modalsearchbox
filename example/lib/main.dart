@@ -46,24 +46,20 @@ class MyApp extends StatelessWidget {
         child: Center(
             child: Column(children: [
           ModalSearchbox(
-              padding: const EdgeInsets.all(0),
               label: "Select Country",
               selectedValue: selectedCountry,
               list: listCountry,
-              contentPadding: const EdgeInsets.symmetric(vertical: 3),
               onChanged: (v) {
                 selectedCountry = v;
               }),
           const SizedBox(height: 16),
           ModalSearchbox(
-              padding: const EdgeInsets.all(0),
               label: "Select Multiple Country",
               isMultipleSelect: true,
               selectedMutipleValue: selectedMultipleCountry,
               list: listCountry,
-              contentPadding: const EdgeInsets.symmetric(vertical: 5),
-              onChanged: (newValue) {
-                selectedMultipleCountry = newValue;
+              onChanged: (v) {
+                selectedMultipleCountry = v;
               })
         ])),
       ),

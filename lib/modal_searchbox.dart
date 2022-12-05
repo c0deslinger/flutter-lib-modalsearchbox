@@ -5,10 +5,8 @@ library modal_searchbox;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-typedef ValueChanged<T> = void Function(T value);
-
 class ModalSearchbox extends StatefulWidget {
-  ModalSearchbox(
+  const ModalSearchbox(
       {Key? key,
       required this.label,
       required this.onChanged,
@@ -17,7 +15,6 @@ class ModalSearchbox extends StatefulWidget {
       this.selectedMutipleValue = const [],
       this.showLabel = true,
       this.addSearch = true,
-      this.onSearch,
       this.borderRadius,
       this.padding,
       this.labelTextstyle,
@@ -38,8 +35,7 @@ class ModalSearchbox extends StatefulWidget {
   final TextStyle? labelTextstyle;
   final Decoration? decoration;
   final EdgeInsetsGeometry? contentPadding;
-  final Function onChanged;
-  final Function? onSearch;
+  final Function(dynamic value) onChanged;
   final List<dynamic> list;
   final String? selectedValue;
   final List<String> selectedMutipleValue;
@@ -49,7 +45,7 @@ class ModalSearchbox extends StatefulWidget {
   final Color? modalBackgroundColor;
   final Color? selectedItemColor;
   final Color? selectedItemBackgroundColor;
-  InputDecoration? searchInputDecoration;
+  final InputDecoration? searchInputDecoration;
 
   @override
   _ModalSearchboxState createState() => _ModalSearchboxState(
@@ -115,7 +111,7 @@ class _ModalSearchboxState extends State<ModalSearchbox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: widget.padding ?? const EdgeInsets.all(10),
+      padding: widget.padding ?? const EdgeInsets.all(0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -310,24 +306,27 @@ class _SearchItemState extends State<_SearchItem> {
                       onChanged: (value) async {
                         search(value);
                       },
-                      decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(8),
-                          fillColor: Colors.white,
-                          filled: true,
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.grey.shade300,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide(color: Colors.grey.shade300),
-                          ),
-                          hintStyle: TextStyle(
-                              color: Colors.grey.shade500, fontSize: 12)),
+                      decoration: widget.searchInputDecoration ??
+                          InputDecoration(
+                              contentPadding: const EdgeInsets.all(8),
+                              fillColor: Colors.white,
+                              filled: true,
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Colors.grey.shade300,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade300),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade300),
+                              ),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey.shade500, fontSize: 12)),
                     ),
                   ),
             Expanded(
