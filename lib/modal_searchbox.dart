@@ -3,7 +3,6 @@ library modal_searchbox;
 // ignore_for_file: library_private_types_in_public_api, no_logic_in_create_state, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ModalSearchbox extends StatefulWidget {
   const ModalSearchbox(
@@ -18,6 +17,7 @@ class ModalSearchbox extends StatefulWidget {
       this.borderRadius,
       this.padding,
       this.labelTextstyle,
+      this.valueTextstyle,
       this.decoration,
       this.contentPadding,
       this.modalShape,
@@ -33,6 +33,7 @@ class ModalSearchbox extends StatefulWidget {
   final bool isMultipleSelect;
   final String label;
   final TextStyle? labelTextstyle;
+  final TextStyle? valueTextstyle;
   final Decoration? decoration;
   final EdgeInsetsGeometry? contentPadding;
   final Function(dynamic value) onChanged;
@@ -76,6 +77,7 @@ class _ModalSearchboxState extends State<ModalSearchbox> {
             isMultipleSelect: widget.isMultipleSelect,
             multipleSelectedValue: selectedMutipleValue,
             title: title,
+            valueTextstyle: widget.valueTextstyle,
             data: data,
             selectedItemBackgroundColor: widget.selectedItemBackgroundColor,
             useSearch: widget.addSearch,
@@ -177,7 +179,7 @@ class _ModalSearchboxState extends State<ModalSearchbox> {
                                           children: [
                                             Expanded(
                                               child: Text(e,
-                                                  style: GoogleFonts.poppins(
+                                                  style: const TextStyle(
                                                       fontSize: 15,
                                                       height: 1.4,
                                                       color: Colors.black)),
@@ -211,8 +213,9 @@ class _ModalSearchboxState extends State<ModalSearchbox> {
                                     }).toList(),
                                   )
                                 : Text(selectedValue ?? "",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 15, height: 1.4)),
+                                    style: widget.valueTextstyle ??
+                                        const TextStyle(
+                                            fontSize: 15, height: 1.4)),
                           ),
                           GestureDetector(
                               onTap: () {
@@ -241,6 +244,7 @@ class _SearchItem extends StatefulWidget {
   bool isMultipleSelect;
   InputDecoration? searchInputDecoration;
   Color? selectedItemBackgroundColor;
+  TextStyle? valueTextstyle;
 
   _SearchItem(
       {required this.title,
@@ -248,6 +252,7 @@ class _SearchItem extends StatefulWidget {
       this.isMultipleSelect = false,
       required this.data,
       this.searchInputDecoration,
+      this.valueTextstyle,
       this.selectedItemBackgroundColor,
       required this.useSearch,
       required this.selectedValue,
@@ -295,8 +300,8 @@ class _SearchItemState extends State<_SearchItem> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(widget.title,
-                style: GoogleFonts.poppins(
-                    fontSize: 20, fontWeight: FontWeight.w700)),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
             const SizedBox(height: 10),
             !widget.useSearch
                 ? Container()
@@ -351,12 +356,13 @@ class _SearchItemState extends State<_SearchItem> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 5),
                               child: Text(filteredData[index],
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 15,
-                                      height: 1.4,
-                                      fontWeight: isAlreadySelected
-                                          ? FontWeight.bold
-                                          : FontWeight.w500)),
+                                  style: widget.valueTextstyle ??
+                                      TextStyle(
+                                          fontSize: 15,
+                                          height: 1.4,
+                                          fontWeight: isAlreadySelected
+                                              ? FontWeight.bold
+                                              : FontWeight.w500)),
                             ),
                           ));
                     }))
